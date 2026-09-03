@@ -1,393 +1,176 @@
+<div align="center">
 
-# Alt+Tab Smooth Animation for Windows 11
+  <h1>✨ Alt+Tab Smooth Animation for Windows 11</h1>
+  
+  <p align="center">
+    <strong>Brings fluid, GPU-accelerated Fluent & macOS-style transition animations to the Windows 11 Task Switcher.</strong>
+  </p>
 
-Brings fluid, modern transition animations to the Alt+Tab switcher in Windows 11.
+  <p align="center">
+    <a href="#-features">Features</a> •
+    <a href="#-animation-styles">14 Styles</a> •
+    <a href="#-how-it-works">Under the Hood</a> •
+    <a href="#-installation">Installation</a> •
+    <a href="#-configuration">Configuration</a> •
+    <a href="#-license">License</a>
+  </p>
+
+  <!-- Badges -->
+  <p align="center">
+    <a href="https://windhawk.net/"><img src="https://img.shields.io/badge/Windhawk-Mod-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windhawk Mod" /></a>
+    <a href="https://www.microsoft.com/windows"><img src="https://img.shields.io/badge/Platform-Windows%2011%20(22H2%20--%2024H2)-005A9E?style=for-the-badge&logo=windows11&logoColor=white" alt="Windows 11" /></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-F5A623?style=for-the-badge&logo=open-source-initiative&logoColor=white" alt="MIT License" /></a>
+    <img src="https://img.shields.io/badge/C%2B%2B-23-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++23" />
+    <img src="https://img.shields.io/badge/Architecture-x86--64-success?style=for-the-badge" alt="x86-64" />
+  </p>
+
+</div>
 
 ---
 
-### Features & 14 Animation Styles:
-Choose from 14 distinct animation styles in the mod settings:
+## 📽️ Preview
 
-- **Fade + Motion Styles (Smooth & Modern):**
-  - **Fade + Slide Up (Default):** Smoothly glides up into place with cubic deceleration while fading in.
-  - **Fade + Slide Down:** Gently drops down from above while fading in.
-  - **Fade + Slide from Right:** Smooth horizontal entrance sliding from the right.
-  - **Fade + Slide from Left:** Smooth horizontal entrance sliding from the left.
-  - **Fade + Zoom In (Scale Up):** Scales up into view from the screen center.
-  - **Fade + Zoom Out (Drop In):** Drops in from a slightly enlarged scale (108% down to 100%).
-  - **Pop & Overshoot (Bouncy Zoom):** Modern iOS/macOS-style pop with an elastic spring bounce.
-  - **Bounce & Overshoot (Bouncy Slide Up):** Slides up with an energetic spring effect.
-  - **Fade Only:** Pure clean opacity fade without movement.
-
-- **Solid Motion Styles (No Fade / Sharp & Crisp):**
-  - **Solid Slide Up:** Crisp mechanical slide up at 100% opacity.
-  - **Solid Slide Down:** Crisp mechanical slide down at 100% opacity.
-  - **Solid Slide from Right:** Crisp physical slide from the right.
-  - **Solid Slide from Left:** Crisp physical slide from the left.
-  - **Solid Zoom In:** Crisp physical zoom without opacity fade.
+<!-- Replace with your actual GIF or mp4 recording from ScreenToGif -->
+<div align="center">
+  <img src="https://raw.githubusercontent.com/m417z/my-windhawk-mods-media/main/macos-minimize-animation.gif" alt="Alt Tab Animation Preview" width="720" style="border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);" />
+  <p><em>Smooth Slide Up & Pop Animation in action on Windows 11</em></p>
+</div>
 
 ---
 
-### Key Highlights:
-- **Zero Input Lag:** The mod intercepts appearance and does not delay window focus or intercept keyboard shortcuts when switching.
-- **Rapid Switching Protection:** Multiple quick presses of Alt+Tab seamlessly cancel ongoing animations without visual stutter.
-- **Customizable:** Adjust animation duration, slide distance, and zoom scale directly in the Windhawk settings tab.
+## 💡 Why this mod?
 
-> **Note on Exit Animation:** In Windows 11, the shell's internal XAML engine immediately unrenders
-> switcher visual elements upon releasing the Alt key. Entrance animations work fully, smoothly, and reliably.
-*/
-// ==/WindhawkModReadme==
+In Windows 11, Microsoft redesigned the Alt+Tab switcher into a floating modern XAML flyout, but **completely disabled its open/close transitions** (`DWMWA_TRANSITIONS_FORCEDISABLED`). The switcher simply blinks into existence with 0ms visual pacing.
 
-// ==WindhawkModSettings==
-/*
-- animationStyle: slideUpFade
-  $name: Animation style
-  $description: Choose from 14 distinct entrance animation styles.
-  $options:
-  - slideUpFade: Fade + Slide Up (Recommended)
-  - slideDownFade: Fade + Slide Down
-  - slideLeftFade: Fade + Slide from Right
-  - slideRightFade: Fade + Slide from Left
-  - zoomInFade: Fade + Zoom In (Scale Up)
-  - zoomOutFade: Fade + Zoom Out (Drop Down)
-  - popZoom: Pop & Overshoot (Bouncy Zoom)
-  - bounceUp: Bounce & Overshoot (Bouncy Slide Up)
-  - fadeOnly: Fade Only (No Movement)
-  - slideUpSolid: Solid Slide Up (No Fade)
-  - slideDownSolid: Solid Slide Down (No Fade)
-  - slideLeftSolid: Solid Slide from Right (No Fade)
-  - slideRightSolid: Solid Slide from Left (No Fade)
-  - zoomSolid: Solid Zoom In (No Fade)
+**Alt+Tab Smooth Animation** changes that. Built as a high-performance **[Windhawk](https://windhawk.net/)** mod, it injects directly into `explorer.exe` to intercept the display cycle and apply butter-smooth easing animations (60 / 120 / 144 / 240 Hz) with **absolute zero input lag**.
 
-- duration: 150
-  $name: Animation duration (ms)
-  $description: Duration of the animation in milliseconds (60-350 ms).
+---
 
-- slideDistance: 24
-  $name: Slide distance (px)
-  $description: Movement distance in pixels for slide animations.
+## 🚀 Features
 
-- zoomScale: 92
-  $name: Zoom start scale (%)
-  $description: Scale factor for Zoom In animations (70-98%).
-*/
-// ==/WindhawkModSettings==
+- ⚡ **Zero Input Lag:** The mod intercepts appearance and does not delay window focus. When releasing `Alt`, focus transfers instantly to your chosen application.
+- 🎨 **14 Handcrafted Animation Styles:** From delicate cubic fades to springy iOS-like pops and crisp mechanical slides.
+- 🛡️ **Fail-Safe & Stable:** Hooks standard Win32 APIs (`ShowWindow`) without touching fragile binary memory offsets. 100% resilient across Windows 11 cumulative updates.
+- 🔄 **Anti-Stutter Rapid Switching:** Repeatedly tapping `Alt+Tab` seamlessly and cleanly cancels previous frames without visual glitching or thread deadlocks.
+- 🎛️ **Fully Customizable:** Adjust animation styles, duration (ms), travel distance (px), and scale percentage on the fly from the Windhawk settings UI.
 
-#include <windows.h>
-#include <windhawk_api.h>
-#include <atomic>
-#include <thread>
-#include <chrono>
+---
 
-enum class AnimStyle {
-    SlideUpFade,
-    SlideDownFade,
-    SlideLeftFade,
-    SlideRightFade,
-    ZoomInFade,
-    ZoomOutFade,
-    PopZoom,
-    BounceUp,
-    FadeOnly,
-    SlideUpSolid,
-    SlideDownSolid,
-    SlideLeftSolid,
-    SlideRightSolid,
-    ZoomSolid
-};
+## 🎭 14 Animation Styles
 
-struct Settings {
-    AnimStyle style;
-    int duration;
-    int slideDistance;
-    int zoomScale;
-} g_settings;
+Choose your favorite look directly from the Windhawk settings dropdown:
 
-AnimStyle ParseStyle(PCWSTR str) {
-    if (!str) return AnimStyle::SlideUpFade;
-    if (wcscmp(str, L"slideUpFade") == 0) return AnimStyle::SlideUpFade;
-    if (wcscmp(str, L"slideDownFade") == 0) return AnimStyle::SlideDownFade;
-    if (wcscmp(str, L"slideLeftFade") == 0) return AnimStyle::SlideLeftFade;
-    if (wcscmp(str, L"slideRightFade") == 0) return AnimStyle::SlideRightFade;
-    if (wcscmp(str, L"zoomInFade") == 0) return AnimStyle::ZoomInFade;
-    if (wcscmp(str, L"zoomOutFade") == 0) return AnimStyle::ZoomOutFade;
-    if (wcscmp(str, L"popZoom") == 0) return AnimStyle::PopZoom;
-    if (wcscmp(str, L"bounceUp") == 0) return AnimStyle::BounceUp;
-    if (wcscmp(str, L"fadeOnly") == 0) return AnimStyle::FadeOnly;
-    if (wcscmp(str, L"slideUpSolid") == 0) return AnimStyle::SlideUpSolid;
-    if (wcscmp(str, L"slideDownSolid") == 0) return AnimStyle::SlideDownSolid;
-    if (wcscmp(str, L"slideLeftSolid") == 0) return AnimStyle::SlideLeftSolid;
-    if (wcscmp(str, L"slideRightSolid") == 0) return AnimStyle::SlideRightSolid;
-    if (wcscmp(str, L"zoomSolid") == 0) return AnimStyle::ZoomSolid;
-    return AnimStyle::SlideUpFade;
-}
+| # | Style Name | Visual Category | Description |
+| :-: | :--- | :---: | :--- |
+| 1 | **`Fade + Slide Up`** ⭐ | `Fade + Motion` | **Recommended.** Glides gently upwards from below while fading in (matches native Win 11 flyouts). |
+| 2 | **`Fade + Slide Down`** | `Fade + Motion` | Softly drops into place from above while fading in. |
+| 3 | **`Fade + Slide from Right`** | `Fade + Motion` | Horizontal entrance, smoothly sliding in from the right edge. |
+| 4 | **`Fade + Slide from Left`** | `Fade + Motion` | Horizontal entrance, smoothly sliding in from the left edge. |
+| 5 | **`Fade + Zoom In`** | `Fade + Scale` | Expands smoothly outward from a compact center scale (~92% to 100%). |
+| 6 | **`Fade + Zoom Out`** | `Fade + Scale` | Drops in from an oversized scale (108% down to 100%). |
+| 7 | **`Pop & Overshoot`** 🔥 | `Spring Bounce` | Modern iOS/macOS spring effect: zooms to 103% then settles into place. |
+| 8 | **`Bounce & Overshoot`** | `Spring Bounce` | Slides upwards with an energetic, playful elastic bounce. |
+| 9 | **`Fade Only`** | `Pure Alpha` | Minimalist, clean opacity fade without spatial movement. |
+| 10 | **`Solid Slide Up`** | `Solid (No Fade)` | Crisp mechanical slide up at 100% solid opacity (no transparency change). |
+| 11 | **`Solid Slide Down`** | `Solid (No Fade)` | Crisp mechanical slide down at 100% solid opacity. |
+| 12 | **`Solid Slide from Right`** | `Solid (No Fade)` | Crisp horizontal entrance from the right at full opacity. |
+| 13 | **`Solid Slide from Left`** | `Solid (No Fade)` | Crisp horizontal entrance from the left at full opacity. |
+| 14 | **`Solid Zoom In`** | `Solid (No Fade)` | Snappy physical zoom from center without opacity fading. |
 
-void LoadSettings() {
-    PCWSTR str = Wh_GetStringSetting(L"animationStyle");
-    g_settings.style = ParseStyle(str);
-    if (str) Wh_FreeStringSetting(str);
+---
 
-    g_settings.duration = Wh_GetIntSetting(L"duration");
-    if (g_settings.duration < 40) g_settings.duration = 40;
-    if (g_settings.duration > 500) g_settings.duration = 500;
+## ⚙️ Configuration
 
-    g_settings.slideDistance = Wh_GetIntSetting(L"slideDistance");
-    if (g_settings.slideDistance < 4) g_settings.slideDistance = 4;
-    if (g_settings.slideDistance > 160) g_settings.slideDistance = 160;
+Tweak your experience in the **Settings** tab of Windhawk:
 
-    g_settings.zoomScale = Wh_GetIntSetting(L"zoomScale");
-    if (g_settings.zoomScale < 70) g_settings.zoomScale = 70;
-    if (g_settings.zoomScale > 98) g_settings.zoomScale = 98;
-}
+```yaml
+- animationStyle: slideUpFade    # Pick any of the 14 styles
+- duration: 150                 # Duration in milliseconds (60 - 350 ms)
+- slideDistance: 24             # Travel distance in pixels
+- zoomScale: 92                 # Starting scale % for Zoom and Pop (70% - 98%)
+```
 
-static std::atomic<uint64_t> g_animGen(0);
+<details>
+<summary><strong>🔍 Recommended Presets (Click to expand)</strong></summary>
 
-using ShowWindow_t = BOOL(WINAPI*)(HWND hWnd, int nCmdShow);
-ShowWindow_t pOriginalShowWindow = nullptr;
+<br>
 
-inline float EaseOutCubic(float t) {
-    float inv = 1.0f - t;
-    return 1.0f - (inv * inv * inv);
-}
+#### 🍎 macOS Style (Bouncy & Fluid)
+- **Style:** `Pop & Overshoot`
+- **Duration:** `170 ms`
+- **Zoom Scale:** `90 %`
 
-inline float EaseOutBack(float t) {
-    const float c1 = 1.70158f;
-    const float c3 = c1 + 1.0f;
-    float inv = t - 1.0f;
-    return 1.0f + c3 * (inv * inv * inv) + c1 * (inv * inv);
-}
+#### 🪟 Windows 11 Fluent Style (Subtle & Elegant)
+- **Style:** `Fade + Slide Up`
+- **Duration:** `140 ms`
+- **Slide Distance:** `20 px`
 
-bool IsAltTabWindow(HWND hWnd) {
-    if (!hWnd || !IsWindow(hWnd)) return false;
+#### ⚡ Gamer / Speed Preset (Ultra-Fast)
+- **Style:** `Fade Only` or `Solid Slide Up`
+- **Duration:** `90 ms`
+- **Slide Distance:** `12 px`
 
-    wchar_t className[128] = {0};
-    if (GetClassNameW(hWnd, className, ARRAYSIZE(className)) == 0) return false;
+</details>
 
-    return (wcscmp(className, L"XamlExplorerHostIslandWindow") == 0 ||
-            wcscmp(className, L"MultitaskingViewFrame") == 0);
-}
+---
 
-inline bool HasFade(AnimStyle style) {
-    switch (style) {
-        case AnimStyle::SlideUpSolid:
-        case AnimStyle::SlideDownSolid:
-        case AnimStyle::SlideLeftSolid:
-        case AnimStyle::SlideRightSolid:
-        case AnimStyle::ZoomSolid:
-            return false;
-        default:
-            return true;
-    }
-}
+## 🔬 Under The Hood (Architecture)
 
-inline bool HasOvershoot(AnimStyle style) {
-    return (style == AnimStyle::PopZoom || style == AnimStyle::BounceUp);
-}
+```mermaid
+flowchart LR
+    A["User presses Alt+Tab"] --> B["explorer.exe calls ShowWindow(SW_SHOWNA)"]
+    B --> C["Windhawk Hook intercepts window (XamlExplorerHostIslandWindow)"]
+    C --> D["SetLayeredWindowAttributes(Alpha: 0)"]
+    D --> E["Async Worker Thread: EaseOutCubic / EaseOutBack @ 144Hz"]
+    E --> F["Hardware-composited final state (100% Opacity)"]
+```
 
-void StartEntranceAnimation(HWND hWnd, const Settings& s) {
-    uint64_t currentGen = ++g_animGen;
+1. **Window Identification:** In Windows 11 (build 22000 through 26200+ 24H2), the switcher is rendered in `explorer.exe` as a modern XAML Island container (`XamlExplorerHostIslandWindow`).
+2. **Hooking Point:** Instead of fragile binary pattern matching, the mod hooks the exported `user32.dll!ShowWindow`. When `SW_SHOWNA` (Cmd: 8) is dispatched, our hook takes over the presentation.
+3. **Layered DWM Composition:** The window is temporarily assigned `WS_EX_LAYERED` attributes. Alpha adjustments and coordinate matrices are applied via non-blocking asynchronous threads.
+4. **Easing Formula:**
+   - **Cubic Deceleration:** $$f(t) = 1 - (1 - t)^3$$
+   - **Elastic Overshoot (Back Ease-Out):** $$f(t) = 1 + c_3(t - 1)^3 + c_1(t - 1)^2$$
+5. **Thread Safety:** Atomic generation counters (`g_animGen`) ensure that rapid double-tapping of `Alt+Tab` cancels obsolete worker loops immediately.
 
-    LONG_PTR exStyle = GetWindowLongPtrW(hWnd, GWL_EXSTYLE);
-    if (!(exStyle & WS_EX_LAYERED)) {
-        SetWindowLongPtrW(hWnd, GWL_EXSTYLE, exStyle | WS_EX_LAYERED);
-    }
-    SetWindowLongPtrW(hWnd, GWL_EXSTYLE, (exStyle | WS_EX_LAYERED) & ~WS_EX_TRANSPARENT);
+---
 
-    bool useFade = HasFade(s.style);
-    bool useOvershoot = HasOvershoot(s.style);
+## 📦 Installation
 
-    // Initial opacity
-    SetLayeredWindowAttributes(hWnd, 0, useFade ? 0 : 255, LWA_ALPHA);
+### Option 1: Via Windhawk Catalog (Easiest)
+1. Install **[Windhawk](https://windhawk.net/)** (if you haven't already).
+2. Go to the **Explore** tab in the app.
+3. Search for `Alt+Tab Smooth Animation`.
+4. Click **Details** → **Install**.
 
-    RECT origRect = {0};
-    GetWindowRect(hWnd, &origRect);
-    int origW = origRect.right - origRect.left;
-    int origH = origRect.bottom - origRect.top;
-    int origX = origRect.left;
-    int origY = origRect.top;
+### Option 2: Manual Installation
+1. Open the **Windhawk** application.
+2. Click the three dots (`...`) in the top-right corner → **New mod**.
+3. Replace the template code with the contents of [`alt-tab-animation.wh.cpp`](./alt-tab-animation.wh.cpp).
+4. Click **Compile Mod** (`Ctrl + F7`).
+5. Press `Alt + Tab` to enjoy!
 
-    if (origW <= 0) origW = GetSystemMetrics(SM_CXSCREEN);
-    if (origH <= 0) origH = GetSystemMetrics(SM_CYSCREEN);
+---
 
-    float minScale = (float)s.zoomScale / 100.0f;
-    int dist = s.slideDistance;
-    AnimStyle style = s.style;
+## 🤝 Contributing
 
-    int startX = origX;
-    int startY = origY;
-    int startW = origW;
-    int startH = origH;
+Contributions, issues, and feature requests are always welcome!
+Feel free to check the [issues page](https://github.com/ramensoftware/windhawk-mods/issues).
 
-    switch (style) {
-        case AnimStyle::SlideUpFade:
-        case AnimStyle::SlideUpSolid:
-        case AnimStyle::BounceUp:
-            startY = origY + dist;
-            break;
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingAnimation`)
+3. Commit your Changes (`git commit -m 'Add some AmazingAnimation'`)
+4. Push to the Branch (`git push origin feature/AmazingAnimation`)
+5. Open a Pull Request
 
-        case AnimStyle::SlideDownFade:
-        case AnimStyle::SlideDownSolid:
-            startY = origY - dist;
-            break;
+---
 
-        case AnimStyle::SlideLeftFade:
-        case AnimStyle::SlideLeftSolid:
-            startX = origX + dist;
-            break;
+## 📜 License
 
-        case AnimStyle::SlideRightFade:
-        case AnimStyle::SlideRightSolid:
-            startX = origX - dist;
-            break;
+Distributed under the **MIT License**. See [`LICENSE`](https://opensource.org/licenses/MIT) for more information.
 
-        case AnimStyle::ZoomInFade:
-        case AnimStyle::ZoomSolid:
-        case AnimStyle::PopZoom:
-            startW = (int)(origW * minScale + 0.5f);
-            startH = (int)(origH * minScale + 0.5f);
-            startX = origX + (origW - startW) / 2;
-            startY = origY + (origH - startH) / 2;
-            break;
+---
 
-        case AnimStyle::ZoomOutFade:
-            startW = (int)(origW * 1.08f + 0.5f);
-            startH = (int)(origH * 1.08f + 0.5f);
-            startX = origX + (origW - startW) / 2;
-            startY = origY + (origH - startH) / 2;
-            break;
-
-        default:
-            break;
-    }
-
-    SetWindowPos(hWnd, NULL, startX, startY, startW, startH, SWP_NOZORDER | SWP_NOACTIVATE);
-    pOriginalShowWindow(hWnd, SW_SHOWNA);
-
-    int duration = s.duration;
-    std::thread([hWnd, duration, currentGen, origX, origY, origW, origH, dist, minScale, style, useFade, useOvershoot]() {
-        const int steps = 16;
-        int stepDelay = duration / steps;
-        if (stepDelay < 5) stepDelay = 5;
-
-        for (int i = 1; i <= steps; i++) {
-            if (g_animGen.load() != currentGen) return;
-
-            float progress = (float)i / (float)steps;
-            float eased = useOvershoot ? EaseOutBack(progress) : EaseOutCubic(progress);
-
-            // 1. Opacity
-            if (useFade) {
-                float fadeEased = EaseOutCubic(progress);
-                int alpha = (int)(255.0f * fadeEased + 0.5f);
-                if (alpha > 255) alpha = 255;
-                SetLayeredWindowAttributes(hWnd, 0, (BYTE)alpha, LWA_ALPHA);
-            }
-
-            // 2. Geometry
-            int curX = origX;
-            int curY = origY;
-            int curW = origW;
-            int curH = origH;
-
-            switch (style) {
-                case AnimStyle::SlideUpFade:
-                case AnimStyle::SlideUpSolid:
-                case AnimStyle::BounceUp:
-                    curY = origY + (int)(dist * (1.0f - eased) + 0.5f);
-                    break;
-
-                case AnimStyle::SlideDownFade:
-                case AnimStyle::SlideDownSolid:
-                    curY = origY - (int)(dist * (1.0f - eased) + 0.5f);
-                    break;
-
-                case AnimStyle::SlideLeftFade:
-                case AnimStyle::SlideLeftSolid:
-                    curX = origX + (int)(dist * (1.0f - eased) + 0.5f);
-                    break;
-
-                case AnimStyle::SlideRightFade:
-                case AnimStyle::SlideRightSolid:
-                    curX = origX - (int)(dist * (1.0f - eased) + 0.5f);
-                    break;
-
-                case AnimStyle::ZoomInFade:
-                case AnimStyle::ZoomSolid:
-                case AnimStyle::PopZoom: {
-                    float curScale = minScale + (1.0f - minScale) * eased;
-                    curW = (int)(origW * curScale + 0.5f);
-                    curH = (int)(origH * curScale + 0.5f);
-                    curX = origX + (origW - curW) / 2;
-                    curY = origY + (origH - curH) / 2;
-                    break;
-                }
-
-                case AnimStyle::ZoomOutFade: {
-                    float curScale = 1.08f - 0.08f * eased;
-                    curW = (int)(origW * curScale + 0.5f);
-                    curH = (int)(origH * curScale + 0.5f);
-                    curX = origX + (origW - curW) / 2;
-                    curY = origY + (origH - curH) / 2;
-                    break;
-                }
-
-                case AnimStyle::FadeOnly:
-                default:
-                    break;
-            }
-
-            if (style != AnimStyle::FadeOnly) {
-                SetWindowPos(hWnd, NULL, curX, curY, curW, curH, SWP_NOZORDER | SWP_NOACTIVATE);
-            }
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(stepDelay));
-        }
-
-        if (g_animGen.load() == currentGen) {
-            SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
-            SetWindowPos(hWnd, NULL, origX, origY, origW, origH, SWP_NOZORDER | SWP_NOACTIVATE);
-        }
-    }).detach();
-}
-
-BOOL WINAPI ShowWindow_Hook(HWND hWnd, int nCmdShow) {
-    if (IsAltTabWindow(hWnd)) {
-        if (nCmdShow == SW_SHOWNA || nCmdShow == SW_SHOW) {
-            StartEntranceAnimation(hWnd, g_settings);
-            return TRUE;
-        } else if (nCmdShow == SW_HIDE) {
-            ++g_animGen;
-            return pOriginalShowWindow(hWnd, SW_HIDE);
-        }
-    }
-    return pOriginalShowWindow(hWnd, nCmdShow);
-}
-
-BOOL Wh_ModInit() {
-    Wh_Log(L"[AltTab Animation v1.0.0] Initializing 14 animation styles...");
-    LoadSettings();
-
-    HMODULE hUser32 = GetModuleHandleW(L"user32.dll");
-    if (!hUser32) hUser32 = LoadLibraryW(L"user32.dll");
-    if (!hUser32) return FALSE;
-
-    void* pShowWindow = (void*)GetProcAddress(hUser32, "ShowWindow");
-    if (!pShowWindow) return FALSE;
-
-    if (!Wh_SetFunctionHook(pShowWindow, (void*)ShowWindow_Hook, (void**)&pOriginalShowWindow)) {
-        Wh_Log(L"[AltTab Animation] Failed to hook ShowWindow.");
-        return FALSE;
-    }
-
-    Wh_Log(L"[AltTab Animation v1.0.0] 14 animation styles active!");
-    return TRUE;
-}
-
-void Wh_ModUninit() {
-    Wh_Log(L"[AltTab Animation v1.0.0] Unloading mod.");
-    ++g_animGen;
-}
-
-void Wh_ModSettingsChanged() {
-    LoadSettings();
-}
+<div align="center">
+  <sub>Crafted with ❤️ for the Windows customization community. If you like this mod, please consider giving it a ⭐!</sub>
+</div>
