@@ -1,18 +1,4 @@
-// ==WindhawkMod==
-// @id              alt-tab-animation
-// @name            Alt+Tab Smooth Animation
-// @description     Smooth customizable entrance animations (Slide, Zoom, Bounce, Fade) for the Windows 11 Alt+Tab switcher.
-// @version         1.0.0
-// @author          Community
-// @github          https://github.com/ramensoftware/windhawk-mods
-// @include         explorer.exe
-// @architecture    x86-64
-// @compilerOptions -ldwmapi -luser32
-// @license         MIT
-// ==/WindhawkMod==
 
-// ==WindhawkModReadme==
-/*
 # Alt+Tab Smooth Animation for Windows 11
 
 Brings fluid, modern transition animations to the Alt+Tab switcher in Windows 11.
